@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/schedule_navigation"
+    app:startDestination="@id/appointmentsFragment">
+
+    <fragment
+        android:id="@+id/appointmentsFragment"
+        android:name="com.example.scheduleme.ui.AppointmentsFragment"
+        android:label="fragment_appointments_list"
+        tools:layout="@layout/fragment_appointments_list">
+        <action
+            android:id="@+id/action_appointmentsFragment_to_newAppointmentFragment2"
+            app:destination="@id/newAppointmentFragment" />
+        <action
+            android:id="@+id/action_appointmentsFragment_to_noteFragment2"
+            app:destination="@id/noteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newAppointmentFragment"
+        android:name="com.example.scheduleme.ui.NewAppointmentFragment"
+        android:label="fragment_new_appointment"
+        tools:layout="@layout/fragment_new_appointment">
+        <action
+            android:id="@+id/action_newAppointmentFragment_to_appointmentsFragment3"
+            app:destination="@id/appointmentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="com.example.scheduleme.ui.NoteFragment"
+        android:label="fragment_notes_list"
+        tools:layout="@layout/fragment_notes_list">
+        <action
+            android:id="@+id/action_noteFragment_to_appointmentsFragment2"
+            app:destination="@id/appointmentsFragment" />
+    </fragment>
+</navigation>
