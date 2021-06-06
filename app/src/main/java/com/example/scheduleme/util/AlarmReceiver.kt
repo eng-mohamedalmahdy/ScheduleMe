@@ -31,23 +31,24 @@ class AlarmReceiver : BroadcastReceiver() {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, i, 0)
 
         val notificationManager: NotificationManager =
-            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel: NotificationChannel = NotificationChannel(
-                "APPOINTMENT",
-                "Appointment",
-                NotificationManager.IMPORTANCE_DEFAULT
+            val notificationChannel = NotificationChannel(
+                    "APPOINTMENT",
+                    "Appointment",
+                    NotificationManager.IMPORTANCE_HIGH
             )
             notificationManager.createNotificationChannel(notificationChannel)
         }
 
         val notificationBuilder: NotificationCompat.Builder =
-            NotificationCompat.Builder(context, "APPOINTMENT")
-                .setContentTitle(context.getString(R.string.app_name))
-                .setContentText("$content is now !")
-                .setSmallIcon(R.drawable.ic_schedule)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
+                NotificationCompat.Builder(context, "APPOINTMENT")
+                        .setContentTitle(context.getString(R.string.app_name))
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setContentText("$content is now !")
+                        .setSmallIcon(R.drawable.ic_schedule)
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true)
         notificationManager.notify(1, notificationBuilder.build())
 
     }

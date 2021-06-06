@@ -40,9 +40,8 @@ class NoteFragment : Fragment() {
         recyclerView = view.findViewById(R.id.list)
         fab = view.findViewById(R.id.fab)
         // Set the adapter
-        fab.setOnClickListener { v ->
+        fab.setOnClickListener {
             showDialog()
-
         }
         with(recyclerView) {
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
@@ -111,12 +110,11 @@ class NoteFragment : Fragment() {
             "Add note"
         ) { _, _ ->
             CoroutineScope(Main).launch {
-                val note: Note = Note(input.text.toString(), appointmentId)
-                val res = withContext(IO) {
+                val note = Note(input.text.toString(), appointmentId)
+                 withContext(IO) {
                     AppointmentsDatabase.getDatabase(context!!).getQueries().insertNote(note)
                 }
                 recyclerView.adapter?.notifyDataSetChanged()
-
             }
         }
         builder.setNegativeButton(

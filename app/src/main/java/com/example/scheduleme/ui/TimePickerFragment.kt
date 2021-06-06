@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class TimePickerFragment(val listener: TimePickerDialog.OnTimeSetListener) : DialogFragment() {
+class TimePickerFragment(private val listener: TimePickerDialog.OnTimeSetListener) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val calendar = Calendar.getInstance()
         return TimePickerDialog(
